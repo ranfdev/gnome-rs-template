@@ -1,5 +1,5 @@
+use adw::subclass::prelude::*;
 use gtk::prelude::*;
-use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 
 use crate::application::ExampleApplication;
@@ -12,7 +12,7 @@ mod imp {
     #[template(resource = "/com/belmoussaoui/GtkRustTemplate/ui/window.ui")]
     pub struct ExampleApplicationWindow {
         #[template_child]
-        pub headerbar: TemplateChild<gtk::HeaderBar>,
+        pub headerbar: TemplateChild<adw::HeaderBar>,
         pub settings: gio::Settings,
     }
 
@@ -29,7 +29,7 @@ mod imp {
     impl ObjectSubclass for ExampleApplicationWindow {
         const NAME: &'static str = "ExampleApplicationWindow";
         type Type = super::ExampleApplicationWindow;
-        type ParentType = gtk::ApplicationWindow;
+        type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -74,11 +74,12 @@ mod imp {
     }
 
     impl ApplicationWindowImpl for ExampleApplicationWindow {}
+    impl AdwApplicationWindowImpl for ExampleApplicationWindow {}
 }
 
 glib::wrapper! {
     pub struct ExampleApplicationWindow(ObjectSubclass<imp::ExampleApplicationWindow>)
-        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow,
+        @extends gtk::Widget, gtk::Window, adw::Window, adw::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
 }
 

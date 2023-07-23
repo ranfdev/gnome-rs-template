@@ -60,6 +60,7 @@ items_to_copy = [
     Path("meson_options.txt"),
     Path("meson.build"),
     Path("README.md"),
+    Path("subprojects")
 ]
 
 for item in items_to_copy:
@@ -76,7 +77,7 @@ files_with_content_to_rename = [
     Path("data") / "com.belmoussaoui.GtkRustTemplate.gschema.xml.in",
     Path("data") / "com.belmoussaoui.GtkRustTemplate.metainfo.xml.in.in",
     Path("data") / "resources" / "resources.gresource.xml",
-    Path("data") / "resources" / "ui" / "window.ui",
+    Path("data") / "resources" / "ui" / "window.blp",
     Path("po") / "POTFILES.in",
     Path("src") / "application.rs",
     Path("src") / "main.rs",

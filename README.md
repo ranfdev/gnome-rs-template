@@ -1,10 +1,8 @@
-# GTK + Rust + Meson + Flatpak = <3
+# GTK + Libadwaita + Blueprint + Rust + Meson + Flatpak = <3
 
-A boilerplate template to get started with GTK, Rust, Meson, Flatpak made for GNOME. It can be adapted for other desktop environments like elementary.
+A boilerplate template to get started with GTK, Libadwaita, Blueprint, Rust, Meson, Flatpak made for GNOME.
 
-<div align="center">
 ![Main window](data/resources/screenshots/screenshot1.png "Main window")
-</div>
 
 ## What does it contains?
 
@@ -52,7 +50,7 @@ A new directory named `contrast` containing the generated project
 Make sure you have `flatpak` and `flatpak-builder` installed. Then run the commands below. Replace `<application_id>` with the value you entered during project creation. Please note that these commands are just for demonstration purposes. Normally this would be handled by your IDE, such as GNOME Builder or VS Code with the Flatpak extension.
 
 ```
-flatpak install --user org.gnome.Sdk//43 org.freedesktop.Sdk.Extension.rust-stable//22.08 org.gnome.Platform//43 org.freedesktop.Sdk.Extension.llvm14//22.08
+flatpak install --user org.gnome.Sdk//master org.freedesktop.Sdk.Extension.rust-stable org.gnome.Platform//master org.freedesktop.Sdk.Extension.llvm16
 flatpak-builder --user flatpak_app build-aux/<application_id>.Devel.json
 ```
 
@@ -75,3 +73,4 @@ Join the GNOME and gtk-rs community!
 
 - [Podcasts](https://gitlab.gnome.org/World/podcasts)
 - [Shortwave](https://gitlab.gnome.org/World/Shortwave)
+- [gtk-rust-template without libadwaita and blueprint](https://gitlab.gnome.org/World/Rust/gtk-rust-template)

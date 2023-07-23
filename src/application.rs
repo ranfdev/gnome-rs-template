@@ -1,8 +1,8 @@
 use gettextrs::gettext;
 use tracing::{debug, info};
 
+use adw::subclass::prelude::*;
 use gtk::prelude::*;
-use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
@@ -22,14 +22,14 @@ mod imp {
     impl ObjectSubclass for ExampleApplication {
         const NAME: &'static str = "ExampleApplication";
         type Type = super::ExampleApplication;
-        type ParentType = gtk::Application;
+        type ParentType = adw::Application;
     }
 
     impl ObjectImpl for ExampleApplication {}
 
     impl ApplicationImpl for ExampleApplication {
         fn activate(&self) {
-            debug!("GtkApplication<ExampleApplication>::activate");
+            debug!("AdwApplication<ExampleApplication>::activate");
             self.parent_activate();
             let app = self.obj();
 
@@ -48,7 +48,7 @@ mod imp {
         }
 
         fn startup(&self) {
-            debug!("GtkApplication<ExampleApplication>::startup");
+            debug!("AdwApplication<ExampleApplication>::startup");
             self.parent_startup();
             let app = self.obj();
 
@@ -62,6 +62,7 @@ mod imp {
     }
 
     impl GtkApplicationImpl for ExampleApplication {}
+    impl AdwApplicationImpl for ExampleApplication {}
 }
 
 glib::wrapper! {
@@ -113,8 +114,9 @@ impl ExampleApplication {
     }
 
     fn show_about_dialog(&self) {
-        let dialog = gtk::AboutDialog::builder()
-            .logo_icon_name(APP_ID)
+        let dialog = adw::AboutWindow::builder()
+            .application_icon(APP_ID)
+            .application_name("GTK Rust Template")
             // Insert your license of choice here
             // .license_type(gtk::License::MitX11)
             // Insert your website here
@@ -123,7 +125,7 @@ impl ExampleApplication {
             .transient_for(&self.main_window())
             .translator_credits(gettext("translator-credits"))
             .modal(true)
-            .authors(vec!["Bilal Elmoussaoui"])
+            .developers(vec!["Bilal Elmoussaoui"])
             .artists(vec!["Bilal Elmoussaoui"])
             .build();
 
